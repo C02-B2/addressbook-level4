@@ -22,7 +22,7 @@ public class StringUtil {
      * @param sentence cannot be null
      * @param word cannot be null, cannot be empty, must be a single word
      */
-    public static boolean containsWordIgnoreCase(String sentence, String word) {
+    public static boolean containsNameIgnoreCase(String sentence, String word) {
         requireNonNull(sentence);
         requireNonNull(word);
 
@@ -39,6 +39,34 @@ public class StringUtil {
             }
         }
         return false;
+    }
+
+    /**
+     * Returns true if the {@code email account} contains the {@code email domain}.
+     *   Ignores case, but a full word match is required.
+     *   <br>examples:<pre>
+     *       containsEmailIgnoreCase("abc@example.com", "example.com") == true
+     *       containsEmailIgnoreCase("abc@example.com", "ExamPle.com") == true
+     *       containsWordIgnoreCase("abc@example.com", "example") == false //not a full word match
+     *       </pre>
+     * @param email account cannot be null
+     * @param email domain cannot be null, cannot be empty, must be a single word with .com
+     */
+    public static boolean containsEmailIgnoreCase(String emailSentence, String word) {
+        requireNonNull(emailSentence);
+        requireNonNull(word);
+
+        String preppedWord = word.trim();
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
+
+        String preppedEmailSentence = emailSentence.substring(emailSentence.indexOf('@') + 1);
+
+        if (preppedEmailSentence.equalsIgnoreCase(preppedWord.toLowerCase())) {
+            return true;
+            }
+
+         return false;
     }
 
     /**
