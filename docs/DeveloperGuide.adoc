@@ -364,6 +364,70 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
 
+=== Displaying the Usage of a Specific Command [Since v1.1]
+
+This function builds upon an existing help function, which takes in no argument and opens the help window. This modification allows the help command to take in an optional argument, which is a command identifier. If command identifier is provided, the result display will display the usage of the command identifier specified. Otherwise, help window will be opened. This enahancement involves the modification of Model and Logic component of the existing program.
+
+Under the Model component, `CommandIdentifier` is implemented this way:
+[source,java]
+----
+public class CommandIdentifier {
+    // ... required public static final fields ...
+    
+    public CommandIdentifier(String commandIdentifier) throws IllegalValueException {
+        requireNonNull(commandIdentifier);
+        if (!isValidCommandIdentifier(commandIdentifier) && !commandIdentifier.equals("")) {
+            throw new IllegalValueException(MESSAGE_COMMAND_WORD_CONSTRAINTS);
+        }
+        this.value = commandIdentifier;
+    }
+    
+    public static boolean isValidCommandIdentifier(String test) {
+        // ... check whether a string is a valid command identifier
+    }
+}
+----
+[NOTE]
+A valid command identifier includes all existing commands and their aliases.
+
+For the Logic component, when the user input help keyword, `HelpCommandParser` will be called. The parse method is implemented this way:
+[source,java]
+----
+public HelpCommand parse(String args) throws ParseException {
+    // ... checks if the command contains at most 1 argument ...
+
+    // ... calls ParserUtil to parse command identifier ...
+    
+    // ... calls HelpCommand
+}
+----
+The following method is added into `ParserUtil` to package the command identifier input into a `CommandIdentifier` object:
+[source,java]
+----
+public static CommandIdentifier parseCommandIdentifier(String commandWord) throws IllegalValueException {
+    requireNonNull(commandWord);
+    return new CommandIdentifier(commandWord.trim());
+}
+----
+Finally, the text to be outputted by the result display will is decided in `HelpCommand`:
+[source,java]
+----
+public class HelpCommand extends Command {
+    public CommandResult execute() {
+        String commandResult;
+        
+        switch(commandIdentifier.value) {
+        
+        // ... switch cases for all the command words and command aliases ...
+        
+        // ... default case: open help window ...
+        
+        }
+    }
+}
+----
+The execution of `HelpCommand` is done in `AddressBookParser`.
+
 === Locating a person's address [Since v1.2]
 
 This function is mainly facilitated by two events: `JumpToListRequestEvent` and `PersonPanelSelectionChangedEvent`.
