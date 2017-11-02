@@ -28,6 +28,8 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         try {
             return new Person[] {
+                //@@author icehawker
+                // Phone, Country fields edited to ensure sample persons are populated with Country information
                 new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Country(""),
                         getEmailSet("alexyeoh@example.com"),
                     new Address("30, Geylang Street 29, #06-40, Singapore 760770"), getScheduleSet(asList("15-01-2017",
@@ -58,6 +60,7 @@ public class SampleDataUtil {
                     new Address("45, Aljunied Street 85, #11-31, singapore 304444"),
                     getScheduleSet(asList("15-01-2017", "25-12-2017"), asList("Team meeting", "Christmas dinner"),
                             asList("Roy Balakrishnan", "Roy Balakrishnan")), getTagSet("colleagues"))
+                            //@@author
             };
         } catch (IllegalValueException e) {
             throw new AssertionError("sample data cannot be invalid", e);
@@ -76,6 +79,7 @@ public class SampleDataUtil {
         }
     }
 
+    //@@author CT15
     /**
      * Returns a schedule set containing the list of schedule dates and activities given.
      * pre-condition: the number of elements in scheduleDates must be the same as that of activities.
@@ -92,6 +96,7 @@ public class SampleDataUtil {
         return schedules;
     }
 
+    //@@author 17navasaw
     /**
      * Returns a tag set containing the list of strings given.
      */
@@ -104,6 +109,7 @@ public class SampleDataUtil {
         return emails;
     }
 
+    //@@author
     /**
      * Returns a tag set containing the list of strings given.
      */

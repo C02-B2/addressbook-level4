@@ -15,11 +15,13 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.schedule.Schedule;
 import seedu.address.testutil.ScheduleBuilder;
 
+//@@author CT15
 public class ScheduleCommandTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    //@@author 17navasaw
     @Test
     public void constructor_nullSchedule_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
@@ -29,9 +31,9 @@ public class ScheduleCommandTest {
 
         new ScheduleCommand(null, null, null);
         new ScheduleCommand(indices, null, null);
-        //new ScheduleCommand(null, new ScheduleBuilder().build());
     }
 
+    //@@author CT15
     @Test
     public void equals() {
         Schedule meeting = new ScheduleBuilder().withActivity("Meeting").build();

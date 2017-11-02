@@ -29,7 +29,6 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<UniqueEmailList> emails;
     private ObjectProperty<Address> address;
     private ObjectProperty<UniqueScheduleList> schedules;
-
     private ObjectProperty<UniqueTagList> tags;
 
     /**
@@ -84,6 +83,10 @@ public class Person implements ReadOnlyPerson {
         return phone.get();
     }
 
+    //@@author icehawker
+    /**
+     * Replaces this person's emails with the emails in the argument tag set.
+     */
     public void setCountry(Country country) {
         this.country.set(requireNonNull(country));
     }
@@ -98,6 +101,7 @@ public class Person implements ReadOnlyPerson {
         return country.get();
     }
 
+    //@@author 17navasaw
     /**
     * Replaces this person's emails with the emails in the argument tag set.
     */
@@ -119,6 +123,7 @@ public class Person implements ReadOnlyPerson {
         return Collections.unmodifiableSet(emails.get().toSet());
     }
 
+    //@@author
     public void setAddress(Address address) {
         this.address.set(requireNonNull(address));
     }
@@ -133,6 +138,7 @@ public class Person implements ReadOnlyPerson {
         return address.get();
     }
 
+    //@@author CT15
     /**
      * Replaces this person's schedules with the schedules in the argument schedule set.
      */
@@ -154,6 +160,7 @@ public class Person implements ReadOnlyPerson {
         return Collections.unmodifiableSet(schedules.get().toSet());
     }
 
+    //@@author
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.

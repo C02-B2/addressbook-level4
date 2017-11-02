@@ -16,6 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.schedule.Activity;
 import seedu.address.model.schedule.ScheduleDate;
 
+//@@author CT15
 /**
  * Parses input arguments and creates a new HelpCommand object
  */
@@ -48,8 +49,6 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
 
             ScheduleDate date = ParserUtil.parseScheduleDate(argMultimap.getValue(PREFIX_DATE)).get();
             Activity activity = ParserUtil.parseActivity(argMultimap.getValue(PREFIX_ACTIVITY)).get();
-
-            //Schedule schedule = new Schedule(date, activity);
 
             return new ScheduleCommand(indices, date, activity);
         } catch (IllegalValueException ive) {

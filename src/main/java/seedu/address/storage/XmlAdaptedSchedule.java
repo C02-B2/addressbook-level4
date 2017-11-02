@@ -11,6 +11,7 @@ import seedu.address.model.schedule.Activity;
 import seedu.address.model.schedule.Schedule;
 import seedu.address.model.schedule.ScheduleDate;
 
+//@@author CT15
 /**
  * JAXB-friendly adapted version of the Schedule.
  */
@@ -31,6 +32,7 @@ public class XmlAdaptedSchedule {
      *
      * @param source future changes to this will not affect the created
      */
+    //@@author 17navasaw
     public XmlAdaptedSchedule(Schedule source) {
         ScheduleDate scheduleDate = source.getScheduleDate();
         Activity activity = source.getActivity();
@@ -40,6 +42,7 @@ public class XmlAdaptedSchedule {
                 + " Person: " + personInvolvedName.toString();
     }
 
+    //@@author
     /**
      * Converts this jaxb-friendly adapted tag object into the model's Schedule object.
      *
@@ -47,14 +50,6 @@ public class XmlAdaptedSchedule {
      */
     public Schedule toModelType() throws IllegalValueException {
         // extract out schedule date and activity from schedule string
-        /*String[] tokens = schedule.split(" ");
-        String scheduleDate = tokens[1];
-        String activity = tokens[3];
-        String personInvolvedName = tokens[5];
-        for (int i = 6; i < tokens.length; i++) {
-            personInvolvedName += " ";
-            personInvolvedName += tokens[i];
-        }*/
         int personHeaderIndex = schedule.indexOf("Person: ");
 
         String scheduleDate = schedule.substring(6, 16);

@@ -6,6 +6,7 @@ import seedu.address.model.schedule.Activity;
 import seedu.address.model.schedule.Schedule;
 import seedu.address.model.schedule.ScheduleDate;
 
+//@@author CT15
 /**
  * A utility class to help with building Schedule objects.
  */
@@ -34,6 +35,7 @@ public class ScheduleBuilder {
         this.schedule = new Schedule(scheduleToCopy);
     }
 
+    //@@author 17navasaw
     /**
      * Sets the {@code ScheduleDate} of the {@code Schedule} that we are building.
      */
@@ -60,6 +62,7 @@ public class ScheduleBuilder {
         return this;
     }
 
+    //@@author CT15
     /**
      * Sets the {@code Activity} of the {@code Schedule} that we are building.
      */
