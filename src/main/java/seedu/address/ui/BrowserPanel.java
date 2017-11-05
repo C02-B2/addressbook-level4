@@ -89,7 +89,7 @@ public class BrowserPanel extends UiPart<Region> {
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.MAIL)) {
                 try {
-                    URI mailto = new URI("mailto:teamb2contag@gmail.com?subject=Hello%20World");
+                    URI mailto = new URI("mailto:?subject=Hello%20World");
                     desktop.mail(mailto);
                 } catch (URISyntaxException | IOException e) {
                     e.printStackTrace();
