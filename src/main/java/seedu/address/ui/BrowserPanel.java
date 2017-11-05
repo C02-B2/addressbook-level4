@@ -1,6 +1,6 @@
 package seedu.address.ui;
 
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -80,8 +80,9 @@ public class BrowserPanel extends UiPart<Region> {
     public void loadCalendar() {
         loadPage("https://www.timeanddate.com/calendar/");
     }
+
     /**
-     * Opens the email window in the browser panel for windows or Ubuntu.
+     * Opens the email window  via a cross platform .
      */
     public void loadEmail() throws URISyntaxException, IOException {
 
@@ -99,25 +100,6 @@ public class BrowserPanel extends UiPart<Region> {
 
         }
     }
-
-//        String url = "https://www.google.com/gmail/";
-//        if (Desktop.isDesktopSupported()) {
-//            Desktop desktop = Desktop.getDesktop();
-//            try {
-//                desktop.browse(new URI(url));
-//            } catch (URISyntaxException | IOException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            Runtime runtime = Runtime.getRuntime();
-//            try {
-//                runtime.exec(url);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//    }
 
     /**
      * Frees resources allocated to the browser.
