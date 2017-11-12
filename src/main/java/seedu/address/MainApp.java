@@ -34,6 +34,7 @@ import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.XmlAddressBookStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
+import com.cloudrail.si.CloudRail;
 
 /**
  * The main entry point to the application.
@@ -208,5 +209,6 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        CloudRail.setAppKey("59d4f034c8b6755b445e1a7b");
     }
 }
